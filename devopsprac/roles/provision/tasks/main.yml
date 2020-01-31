@@ -1,0 +1,21 @@
+---
+# tasks file for provision
+- name: "update  packages"
+  changed_when: False
+  apt:
+    update_cache: yes
+  become: true
+
+- name: "upgrade packages"
+  apt:
+    name: "*"
+    state: latest
+  become: True
+
+- name: hostnames
+  hostname:   
+    name: "{{ inventory_hostname }}"
+  become: True
+
+     
+  

@@ -1,0 +1,12 @@
+all:
+  hosts:
+    webserver-1:
+  children:
+    webservers:
+      hosts:
+        webserver-1:
+      
+                
+    
+
+    

@@ -1,0 +1,9 @@
+ansible_ssh_host: 18.223.97.167
+
+# # openvpn_server_hostname: "{{ ansible_ssh_host }}"
+# # openvpn_redirect_gateway: true
+# # openvpn_dualstack: false
+# # openvpn_client_register_dns: false #set to true for windows clients
+# # clients: 
+# #   - darshan
+# # openvpn_fetch_config_dir: ./remote_files/vpn/configs

@@ -1,0 +1,78 @@
+---
+#tasks file for webserver
+
+- name: Install apache
+  become: true
+  apt:
+    name: apache2
+    state: latest
+  tags:
+    - apache 
+
+- name: start apache
+  service:
+    name: apache2
+    state: started
+    enabled: yes
+  become: true
+
+- name: Add Docker GPG apt Key
+  become: true
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Docker Repository
+  become: true
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu bionic stable
+    state: present
+
+- name: Update apt and install docker-ce
+  become: true
+  apt: update_cache=yes name=docker-ce state=latest
+
+- name: Install python3-pip
+  become: true
+  apt: update_cache=yes name=python3-pip state=latest  
+
+- name: Install Docker Module for Python
+  become: true
+  pip:
+    name: docker
+
+- name: pull an image
+  become: true
+  docker_image:
+    name: jenkins
+
+- name: Start jenkins container
+  become: true 
+  docker_container:
+    name: Jenkins
+    image: jenkins
+    ports:
+     - "8080:8080"
+# - name: Ensure boto and boto3 modules are installed
+#   become: true
+#   pip:
+#     name: boto3
+ 
+# - name: ecs cluster
+#   vars:
+#      aws_access_key:"AKIAXEPEV23TG6BIFZLV"
+#      aws_secret_key:"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"
+#      aws_region:"us-east-2"    
+#   ecs_cluster:
+#    region: "us-east-2"
+#    name: ansible
+#    state: present
+   
+
+
+
+    
+
+  
+
+        

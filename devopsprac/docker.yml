@@ -1,0 +1,8 @@
+--- 
+- 
+  become: true
+  docker_image: 
+    name: jenkins
+    source: pull
+  hosts: webservers
+  name: "Pull default Docker image"

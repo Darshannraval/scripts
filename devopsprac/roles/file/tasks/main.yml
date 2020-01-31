@@ -1,0 +1,27 @@
+---
+# tasks file for file
+
+# - name: Create file
+#   file:
+#     path: /tmp/random_file"{{ 10 | random }}"
+#     state: touch
+
+- name: Test IP Address
+  vars:
+    ip_address: 192.168.1.2
+  debug:
+      msg: IP Address = {{ ip_address | ipaddr }}
+
+# -  name: Get filename
+#    vars:
+#      file_path: /test/
+#    debug:
+#       msg: File Name = {{file_path | basename}}
+
+# - name: delete the file
+#   become: true
+#   shell:
+#   args:
+#     chdir: /tmp
+#     cmd: rm -r random* 
+
